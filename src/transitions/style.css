@@ -6,11 +6,12 @@ body {
   width: 200px;
   height: 200px;
   background-color: purple;
-  transition: transform 0.3s ease-in-out;
-  /* transition: 2s 1s ease-in-out all; */
+  transition:
+    transform 0.1s ease-in-out,
+    background-color 0.1s 0.1s;
 
-  /* &:hover {
+  &:hover {
     transform: rotate(45deg);
-    background-color: skyblue;
-  } */
+    background-color: yellowgreen;
+  }
 }
