@@ -6,12 +6,17 @@ body {
   width: 200px;
   height: 200px;
   background-color: purple;
-  transition:
+  /* transition:
     transform 0.1s ease-in-out,
-    background-color 0.1s 0.1s;
+    background-color 0.1s 0.1s; */
+  background-image: linear-gradient(purple, yellow);
+  transition: all 2s allow-discrete;
 
   &:hover {
-    transform: rotate(45deg);
-    background-color: yellowgreen;
+    /* transform: rotate(45deg);
+    background-color: yellowgreen; */
+
+    background-image: linear-gradient(skyblue, violet);
+    transform: translateX(100px);
   }
 }

@@ -6,16 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.ontransitionrun = (event: TransitionEvent) => {
-    console.log(event);
+    // console.log(event);
   };
 
   document.ontransitionstart = (event: TransitionEvent) => {
-    console.log(event);
+    // console.log(event);
   };
 
   document.ontransitionend = (event: TransitionEvent) => {
-    if (event.propertyName === 'transform') {
-      element.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    }
+    // if (event.propertyName === 'transform') {
+    //   element.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    // }
   };
 });
