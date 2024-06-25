@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const element = document.getElementById('square')!;
   // const toggleButton = document.querySelector('.toggle-square')!;
   const addButton = document.querySelector('.add-square')!;
+  const toggleColorButton = document.querySelector('.toggle-color')!;
 
   // document.onclick = (event: MouseEvent) => {
   //   // element.style.transform = `translateY(${event.clientY - element.clientHeight / 2}px) translateX(${event.clientX - element.clientWidth / 2}px)`;
@@ -29,5 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const newSquare = document.createElement('div');
     newSquare.classList.add('square');
     document.querySelector('.wrapper')?.appendChild(newSquare);
+  });
+
+  toggleColorButton.addEventListener('click', () => {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach((square) => {
+      square.classList.toggle('blue');
+    });
   });
 });
