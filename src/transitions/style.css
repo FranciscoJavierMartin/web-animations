@@ -10,13 +10,21 @@ body {
     transform 0.1s ease-in-out,
     background-color 0.1s 0.1s; */
   background-image: linear-gradient(purple, yellow);
-  transition: all 2s allow-discrete;
+  /* transition: all 2s allow-discrete; */
+  transition:
+    display 2s allow-discrete,
+    opacity 2s;
+
+  &.hide {
+    display: none;
+    opacity: 0;
+  }
 
   &:hover {
     /* transform: rotate(45deg);
     background-color: yellowgreen; */
 
-    background-image: linear-gradient(skyblue, violet);
-    transform: translateX(100px);
+    /* background-image: linear-gradient(skyblue, violet);
+    transform: translateX(100px); */
   }
 }
