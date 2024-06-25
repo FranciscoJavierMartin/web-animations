@@ -1,14 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web animations</title>
+    <style>
+      .list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        a {
+          font-size: 20px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="app">
-      <a href="src/transitions/">Link</a>
+    <div id="app" class="list">
+      <a href="src/transitions/">Transitions</a>
+      <a href="src/timing-funcitons/">Timing functions</a>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
