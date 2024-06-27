@@ -19,4 +19,16 @@ body {
   width: 100px;
   height: 100px;
   background-color: gold;
+  animation-name: move;
+  animation-duration: 2s;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(100vw - 140px));
+  }
 }
