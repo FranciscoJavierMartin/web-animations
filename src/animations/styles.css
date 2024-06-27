@@ -33,6 +33,10 @@ body {
   /* animation: 2s ease-in-out 2 alternate-reverse move; */
   /* animation-composition: add; */
   /* animation-fill-mode: backwards; */
+  animation: 2s ease-in-out 1 alternate move;
+  animation-direction: normal;
+  animation-fill-mode: both;
+  animation-composition: add;
 }
 
 @keyframes move {
