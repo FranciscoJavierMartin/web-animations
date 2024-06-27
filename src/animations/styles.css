@@ -19,8 +19,14 @@ body {
   width: 100px;
   height: 100px;
   background-color: gold;
-  animation-name: move;
+  /* animation-name: move;
   animation-duration: 2s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+  animation-play-state: paused; */
+  animation: move 2s 0s linear 2 alternate running;
 }
 
 @keyframes move {
