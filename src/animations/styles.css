@@ -29,16 +29,19 @@ body {
   /* animation:
     move 2s 0s linear infinite alternate running,
     0.3s ease-in-out infinite alternate bounce; */
-  transform: rotate(45deg);
-  animation: 2s ease-in-out infinite alternate move;
-  animation-composition: add;
+  /* transform: rotate(45deg); */
+  /* animation: 2s ease-in-out 2 alternate-reverse move; */
+  /* animation-composition: add; */
+  /* animation-fill-mode: backwards; */
 }
 
 @keyframes move {
   0% {
     transform: translateX(0);
   }
-
+  /* 50% {
+    background-color: blue;
+  } */
   100% {
     transform: translateX(calc(100vw - 140px));
   }
