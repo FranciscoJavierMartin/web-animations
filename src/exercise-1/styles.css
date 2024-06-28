@@ -103,6 +103,7 @@ body {
   height: 50vh;
   width: 100%;
   top: 50%;
+  animation: calc(var(--duration) * 1.5) linear infinite moveForeground;
 }
 
 .foreground img {
@@ -139,5 +140,15 @@ body {
 
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes moveForeground {
+  0% {
+    transform: translateX(200%);
+  }
+
+  100% {
+    transform: translateX(-200%);
   }
 }
