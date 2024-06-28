@@ -31,9 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
       delay: 1000,
       direction: 'alternate',
       fill: 'both',
-      iterations: Infinity,
+      iterations: 2,
       easing: 'linear',
       composite: 'add',
+      iterationComposite: 'accumulate',
       timeline: document.timeline,
     },
   );
