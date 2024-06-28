@@ -7,23 +7,22 @@
     <title>Web animations</title>
     <style>
       .list {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
+        font-size: 20px;
+        list-style: none;
 
-        a {
-          font-size: 20px;
+        & > li {
+          margin-bottom: 10px;
         }
       }
     </style>
   </head>
   <body>
-    <div id="app" class="list">
-      <a href="src/transitions/">Transitions</a>
-      <a href="src/timing-funcitons/">Timing functions</a>
-      <a href="src/animations/">CSS animations</a>
-      <a href="src/exercise-1/">Exercise 1</a>
-    </div>
+    <ul id="app" class="list">
+      <li><a href="src/transitions/">Transitions</a></li>
+      <li><a href="src/timing-funcitons/">Timing functions</a></li>
+      <li><a href="src/animations/">CSS animations</a></li>
+      <li><a href="src/exercise-1/">Exercise 1</a></li>
+    </ul>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

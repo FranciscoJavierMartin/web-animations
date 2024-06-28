@@ -20,6 +20,10 @@ body {
   box-sizing: border-box;
 }
 
+:root {
+  --duration: 12s;
+}
+
 .sky {
   background-image: linear-gradient(rgb(97, 191, 228), rgb(204, 233, 245));
   height: 50vh;
@@ -74,6 +78,7 @@ body {
   background-repeat: no-repeat;
   width: var(--char-width);
   aspect-ratio: 0.535;
+  animation: 1s steps(8, jump-none) infinite run;
 }
 
 .background {
@@ -82,21 +87,34 @@ body {
   width: 100%;
   top: 0;
 }
+
 .background img {
   position: absolute;
   height: 50%;
   bottom: -5px;
   left: 0;
 }
+
 .foreground {
   position: absolute;
   height: 50vh;
   width: 100%;
   top: 50%;
 }
+
 .foreground img {
   position: absolute;
   height: 90%;
   bottom: 0px;
   left: 0;
+}
+
+@keyframes run {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: calc(var(--char-width) * -7) 0;
+  }
 }
