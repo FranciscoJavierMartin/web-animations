@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  character?.addEventListener('click', (event) => {
+    if (!character.classList.contains('jump')) {
+      character.classList.add('jump');
+    }
+  });
+
   character?.addEventListener('animationend', (event) => {
     if (event.animationName === 'jump') {
       character?.classList.remove('jump');
