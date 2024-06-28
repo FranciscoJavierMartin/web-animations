@@ -81,6 +81,10 @@ body {
   width: var(--char-width);
   aspect-ratio: 0.535;
   animation: 1s steps(8, jump-none) infinite run;
+
+  &.jump {
+    animation: 0.5s ease-in-out 2 alternate jump;
+  }
 }
 
 .background {
@@ -150,5 +154,15 @@ body {
 
   100% {
     transform: translateX(-200%);
+  }
+}
+
+@keyframes jump {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-70px);
   }
 }
