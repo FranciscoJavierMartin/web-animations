@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('hello');
   const character = document.querySelector('.character')!;
+  const street = document.querySelector('.street')!;
+  const background = document.querySelector('.background');
+  const foreground = document.querySelector('.foreground');
+
   const characterAnimation = character.animate(
     [
       {
@@ -14,6 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 1000,
       iterations: Infinity,
       easing: 'steps(8, jump-none)',
+    },
+  );
+
+  const streetAnimation = street.animate(
+    [
+      {
+        transform: 'translateX(0)',
+      },
+      {
+        transform: 'translateX(-50%)',
+      },
+    ],
+    {
+      easing: 'linear',
+      duration: 12000,
+      iterations: Infinity,
     },
   );
 
