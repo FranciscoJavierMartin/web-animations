@@ -82,7 +82,7 @@ body {
 }
 
 .character.jump {
-  background-position: calc(var(--char-width) * -4) 0px;
+  background-position: calc(var(--char-width) * -4) 0px !important;
 }
 
 .background {
