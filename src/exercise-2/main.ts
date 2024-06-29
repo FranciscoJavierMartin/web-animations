@@ -112,20 +112,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function runFaster(): void {
+    if (streetAnimation.playbackRate < 3) {
+      document.getAnimations().forEach((animation) => {
+        animation.updatePlaybackRate(animation.playbackRate * 1.1);
+      });
+    }
+  }
+
+  function runSlower(): void {
+    if (streetAnimation.playbackRate > 0.8) {
+      document.getAnimations().forEach((animation) => {
+        animation.updatePlaybackRate(animation.playbackRate * 0.9);
+      });
+    }
+  }
+
+  setInterval(() => {
+    if (streetAnimation.playState === 'running') {
+      runSlower();
+    }
+  }, 5000);
+
   document.addEventListener('keyup', (event) => {
     switch (event.code) {
       case 'ArrowUp':
         jump();
         break;
       case 'ArrowRight':
+        runFaster();
         break;
       case 'ArrowLeft':
+        runSlower();
         break;
-
       case 'Space':
         togglePlayState();
         break;
-
       default:
         break;
     }
