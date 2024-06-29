@@ -54,6 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   );
 
+  const foregroundAnimation = foreground.animate(
+    [
+      {
+        transform: 'translateX(200%)',
+      },
+      {
+        transform: 'translateX(-200%)',
+      },
+    ],
+    {
+      easing: 'linear',
+      duration:
+        +(streetAnimation.effect?.getComputedTiming().duration || 0) * 1.5,
+      iterations: Infinity,
+    },
+  );
+
   async function jump(): Promise<void> {
     if (
       !character.getAnimations().some((animation) => animation.id === 'jump')
