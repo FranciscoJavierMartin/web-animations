@@ -1,22 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const element = document.querySelector('.square');
-  const element2 = document.querySelector('.square-3');
-
-  element2.animate(
-    [
-      {
-        backgroundColor: 'red',
-      },
-      {
-        backgroundColor: 'yellow',
-      },
-    ],
-    {
-      duration: 2000,
-      direction: 'alternate',
-      iterations: Infinity,
-    },
-  );
 
   const squareAnimation = element?.animate(
     // {
@@ -49,9 +32,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       delay: 1000,
       direction: 'alternate',
       fill: 'both',
-      iterations: 2,
+      iterations: 1,
       easing: 'linear',
-      composite: 'add',
+      composite: 'replace',
       iterationComposite: 'accumulate',
       timeline: document.timeline,
     },
@@ -198,26 +181,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     squareAnimation.startTime = e.target.value;
   });
 
-  // squareAnimation.pause();
-  // console.log('playState after pause(): ', squareAnimation.playState);
-  // console.log('pending after pause(): ', squareAnimation.pending);
-  // squareAnimation.ready.then(() => {
-  //   console.log('Animation Ready');
-  //   console.log('playState after ready: ', squareAnimation.playState);
-  //   console.log('pending after ready: ', squareAnimation.pending);
-  // });
-  // squareAnimation.play();
-  // console.log('playState after play(): ', squareAnimation.playState);
-  // console.log('pending after play(): ', squareAnimation.pending);
-
-  squareAnimation.addEventListener('finish', (e) => {
-    console.log(e);
-  });
-
-  squareAnimation.addEventListener('cancel', (e) => {
-    console.log(e);
-  });
-
   const speedButtons = document.querySelectorAll('.speedButton');
   speedButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -232,5 +195,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
       }
     });
+  });
+
+  squareAnimation.addEventListener('finish', () => {
+    squareAnimation.commitStyles();
+    squareAnimation.cancel();
+    element.style.transform = 'translateX(90px)';
   });
 });
