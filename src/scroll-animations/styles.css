@@ -15,34 +15,12 @@ body {
     sans-serif;
   padding: 0;
   margin: 0;
-  timeline-scope: --progress-view;
 }
 
 .container {
   height: 100vh;
   overflow: auto;
   background-color: #100e1e;
-  animation: both changeBg;
-  animation-timeline: --progress-view;
-
-  &::after,
-  &::before {
-    content: '';
-    position: fixed;
-    width: 100%;
-    height: 5px;
-    background-color: gold;
-
-    z-index: 100;
-  }
-
-  &::before {
-    top: 100px;
-  }
-
-  &::after {
-    bottom: 100px;
-  }
 }
 
 .content {
@@ -65,11 +43,8 @@ body {
   top: 0;
   left: 0;
   background-color: rgb(209, 90, 213);
-  view-timeline: --progress-view;
   animation: linear both animateWidth;
-  animation-timeline: --progress-view;
-  view-timeline-inset: 100px 100px;
-  animation-range: 100px normal;
+  animation-timeline: view(block 20%);
 }
 
 @keyframes animateWidth {
