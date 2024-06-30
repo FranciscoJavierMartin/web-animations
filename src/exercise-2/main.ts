@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const street = document.querySelector('.street')!;
   const background = document.querySelector('.background')!;
   const foreground = document.querySelector('.foreground')!;
+  const carWrapper = document.querySelector('.car-wrapper')!;
 
   const characterAnimation = character.animate(
     [
@@ -130,6 +131,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  async function addNewCar(): Promise<void> {
+    const car = document.createElement('div');
+    car.classList.add('car');
+    const carAnimation = car.animate(
+      [
+        {
+          transform: 'translateX(-100vw)',
+        },
+        {
+          transform: 'translateX(100vw)',
+        },
+      ],
+      {
+        duration: 2000,
+        easing: 'linear',
+      },
+    );
+
+    carWrapper.appendChild(car);
+    await carAnimation.finished;
+    car.remove();
+  }
+
+  addNewCar();
 
   function runFaster(): void {
     if (streetAnimation.playbackRate < 3) {
