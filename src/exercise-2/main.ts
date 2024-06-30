@@ -130,37 +130,59 @@ document.addEventListener('DOMContentLoaded', () => {
         animation.play();
       }
     });
+    addNewCar();
   }
 
   async function addNewCar(): Promise<void> {
-    const car = document.createElement('div');
-    car.classList.add('car');
-    const carAnimation = car.animate(
-      [
+    if (
+      streetAnimation.playState === 'running' &&
+      !document.querySelector('.car')
+    ) {
+      const car = document.createElement('div');
+      car.classList.add('car');
+      const carAnimation = car.animate(
+        [
+          {
+            transform: 'translateX(-100vw)',
+          },
+          {
+            transform: 'translateX(100vw)',
+          },
+        ],
         {
-          transform: 'translateX(-100vw)',
+          id: 'car',
+          duration: Math.random() * 4_000 + 2_000,
+          easing: 'linear',
         },
-        {
-          transform: 'translateX(100vw)',
-        },
-      ],
-      {
-        duration: 2000,
-        easing: 'linear',
-      },
-    );
+      );
 
-    carWrapper.appendChild(car);
-    await carAnimation.finished;
-    car.remove();
+      carWrapper.appendChild(car);
+      await carAnimation.finished;
+      car.remove();
+
+      setTimeout(
+        () => {
+          if (streetAnimation.playState === 'running') {
+            addNewCar();
+          }
+        },
+        Math.floor(Math.random() * 4_000),
+      );
+    }
   }
 
-  addNewCar();
+  streetAnimation.ready.then(() => {
+    if (streetAnimation.playState === 'running') {
+      addNewCar();
+    }
+  });
 
   function runFaster(): void {
     if (streetAnimation.playbackRate < 3) {
       document.getAnimations().forEach((animation) => {
-        animation.updatePlaybackRate(animation.playbackRate * 1.1);
+        if (animation.id !== 'car') {
+          animation.updatePlaybackRate(animation.playbackRate * 1.1);
+        }
       });
     }
   }
@@ -168,7 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function runSlower(): void {
     if (streetAnimation.playbackRate > 0.8) {
       document.getAnimations().forEach((animation) => {
-        animation.updatePlaybackRate(animation.playbackRate * 0.9);
+        if (animation.id !== 'car') {
+          animation.updatePlaybackRate(animation.playbackRate * 0.9);
+        }
       });
     }
   }
