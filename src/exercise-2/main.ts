@@ -156,6 +156,27 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       );
 
+      [':after', ':before'].forEach((pseudoElement) => {
+        car.animate(
+          [
+            {
+              transform: 'rotate(0)',
+            },
+            {
+              transform: 'rotate(360deg)',
+            },
+          ],
+          {
+            id: 'car',
+            pseudoElement,
+            iterations: Infinity,
+            easing: 'linear',
+            duration:
+              +(carAnimation.effect?.getComputedTiming().duration || 0) / 4,
+          },
+        );
+      });
+
       carWrapper.appendChild(car);
       await carAnimation.finished;
       car.remove();
