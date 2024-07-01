@@ -33,10 +33,23 @@ document.addEventListener('DOMContentLoaded', () => {
   grid.addEventListener('click', async (e) => {
     const item = e.target.closest('.grid-item');
     if (!item || item.classList.contains('active')) return;
-    expandImage(item);
+
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        expandImage(item);
+      });
+    } else {
+      expandImage(item);
+    }
   });
 
   gridButton.addEventListener('click', async (e) => {
-    displayGrid();
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        displayGrid();
+      });
+    } else {
+      displayGrid();
+    }
   });
 });
