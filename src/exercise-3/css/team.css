@@ -1,16 +1,28 @@
 .team {
   position: relative;
+  height: 360vh;
+  view-timeline: --team-view;
 }
 
 .team .team-inner {
   height: calc(100vh - var(--header-height));
+  position: sticky;
+  top: var(--header-height);
+  overflow-x: hidden;
+  animation: linear both teamBg;
+  animation-timeline: --team-view;
+  animation-range: contain;
 }
 
 .team .team-inner .team-grid {
+  width: 180vw;
   height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
+  animation: linear both moveTeamGrid;
+  animation-timeline: --team-view;
+  animation-range: contain;
 }
 
 .team .team-inner h2 {
@@ -21,6 +33,9 @@
   right: 0;
   margin: auto;
   top: 10%;
+  animation: both titleAppear;
+  animation-timeline: --team-view;
+  animation-range: entry-crossing 20vh entry-crossing 40vh;
 }
 
 .team .team-inner .team-grid .grid {
@@ -40,6 +55,9 @@
   padding: 60px 30px;
   text-align: center;
   border-radius: 3px;
+  animation: both cardAppear;
+  animation-timeline: --team-view;
+  animation-range: entry-crossing 60vh entry-crossing 80vh;
 }
 
 .team .team-inner .team-grid .grid .card img {
@@ -50,6 +68,9 @@
   margin-bottom: 20px;
   outline: 1px solid var(--green);
   outline-offset: 3px;
+  animation: linear both rotateTeamMemberImage;
+  animation-timeline: --team-view;
+  animation-range: contain;
 }
 
 .team .team-inner .team-grid .grid .card h3 {
@@ -77,4 +98,75 @@
   stroke: var(--green);
   stroke-width: 1px;
   opacity: 0.03;
+  stroke-dasharray: 1000;
+  animation:
+    2s infinite neon,
+    both drawLogo;
+  animation-timeline: auto, --team-view;
+  animation-range: contain 0% contain 20%;
+}
+
+@keyframes moveTeamGrid {
+  to {
+    transform: translateX(calc(-100% + 100vw));
+  }
+}
+
+@keyframes rotateTeamMemberImage {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes teamBg {
+  0% {
+    background-color: var(--bg);
+  }
+  10%,
+  80% {
+    background-color: #0a120f;
+  }
+  100% {
+    background-color: var(--bg);
+  }
+}
+
+@keyframes titleAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    clip-path: inset(10%);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0%);
+  }
+}
+
+@keyframes neon {
+  0% {
+    opacity: 0.03;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 0.2;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.1;
+  }
 }
