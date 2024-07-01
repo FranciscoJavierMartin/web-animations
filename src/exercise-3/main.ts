@@ -7,4 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
       logoSVG.classList.add('animate');
     }, 5_000);
   });
+
+  const mediaQuery = matchMedia('(prefers-reduced-motion)');
+
+  function checkReducedMotion(): void {
+    const video = document.querySelectorAll<HTMLVideoElement>('.bg-video');
+    if (mediaQuery.matches) {
+      video.forEach((v: HTMLVideoElement) => v.pause());
+    } else {
+      video.forEach((v: HTMLVideoElement) => v.play());
+    }
+  }
+
+  checkReducedMotion();
+  mediaQuery.addEventListener('change', checkReducedMotion);
 });
