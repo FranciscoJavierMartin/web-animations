@@ -1,6 +1,12 @@
 .hero {
-  height: 150vh;
+  height: 100vh;
   view-timeline: --hero-view;
+}
+
+@supports (animation-timeline: view()) {
+  .hero {
+    height: 150vh;
+  }
 }
 
 @media (prefers-reduced-motion) {
@@ -34,9 +40,14 @@
     5% 93%,
     0% 12%
   );
-  animation: forwards backVideo;
-  animation-timeline: --hero-view;
-  animation-range: exit-crossing 0% exit-crossing 20%;
+}
+
+@supports (animation-timeline: view()) {
+  .hero .back-video {
+    animation: forwards backVideo;
+    animation-timeline: --hero-view;
+    animation-range: exit-crossing 0% exit-crossing 20%;
+  }
 }
 
 @media (prefers-reduced-motion) {
@@ -58,11 +69,6 @@
     5% 93%,
     0% 12%
   );
-  animation:
-    both frontVideoClipPath,
-    both border;
-  animation-timeline: --hero-view;
-  animation-range: exit-crossing;
 }
 
 .hero .front-video {
@@ -79,11 +85,16 @@
     30% 100%,
     0% 50%
   );
-  animation:
-    both frontVideoClipPath,
-    both frontVideoSaturation;
-  animation-timeline: --hero-view;
-  animation-range: exit-crossing;
+}
+
+@supports (animation-timeline: view()) {
+  .hero .front-video {
+    animation:
+      both frontVideoClipPath,
+      both border;
+    animation-timeline: --hero-view;
+    animation-range: exit-crossing;
+  }
 }
 
 @media (prefers-reduced-motion) {
@@ -115,6 +126,16 @@
   animation-range: exit-crossing;
 }
 
+@supports (animation-timeline: view()) {
+  .hero .front-video video {
+    animation:
+      both frontVideoClipPath,
+      both frontVideoSaturation;
+    animation-timeline: --hero-view;
+    animation-range: exit-crossing;
+  }
+}
+
 @media (prefers-reduced-motion) {
   .hero .front-video video {
     animation: none;
@@ -142,16 +163,17 @@
   text-align: center;
 }
 
-.hero .content .content-inner h2.first {
-  animation: both title1;
-  animation-timeline: --hero-view;
-  animation-range: exit-crossing 0% exit-crossing 10%;
-}
-
-.hero .content .content-inner h2.second {
-  animation: both title2;
-  animation-timeline: --hero-view;
-  animation-range: exit-crossing 10% exit-crossing 70%;
+@supports (animation-timeline: view()) {
+  .hero .content .content-inner h2.first {
+    animation: both title1;
+    animation-timeline: --hero-view;
+    animation-range: exit-crossing 0% exit-crossing 10%;
+  }
+  .hero .content .content-inner h2.second {
+    animation: both title2;
+    animation-timeline: --hero-view;
+    animation-range: exit-crossing 10% exit-crossing 70%;
+  }
 }
 
 @media (prefers-reduced-motion) {
