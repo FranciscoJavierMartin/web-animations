@@ -37,11 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!item || item.classList.contains('active')) return;
 
     if (document.startViewTransition) {
+      const thumbnail = item.querySelector('img')!;
+      const largeImage = main.querySelector('img')!;
+
+      thumbnail.style.viewTransitionName = 'image';
+      largeImage.style.viewTransitionName = 'none';
+
       const transition = document.startViewTransition(() => {
+        thumbnail.style.viewTransitionName = 'none';
+        largeImage.style.viewTransitionName = 'image';
         expandImage(item);
       });
 
       await transition.finished;
+      // largeImage.style.viewTransitionName = 'none';
 
       item.scrollIntoView({
         behavior: 'smooth',
@@ -52,9 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   gridButton.addEventListener('click', async (e) => {
     if (document.startViewTransition) {
-      document.startViewTransition(() => {
+      const activeThumbnail = grid.querySelector('.active img');
+      const largeImage = main.querySelector('img')!;
+
+      const transition = document.startViewTransition(() => {
+        activeThumbnail.style.viewTransitionName = 'image';
+        largeImage.style.viewTransitionName = 'none';
         displayGrid();
       });
+
+      await transition.finished;
+      activeThumbnail.style.viewTransitionName = 'none';
     } else {
       displayGrid();
     }
