@@ -42,6 +42,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
+  view-transition-name: header;
 }
 
 .header .header-inner {
@@ -54,6 +55,10 @@ img {
 
 .header.expanded .header-inner {
   justify-content: flex-start;
+}
+
+.header .title {
+  view-transition-name: header-title;
 }
 
 .header .title h1 {
@@ -86,6 +91,7 @@ img {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 20px;
+  /* view-transition-name: grid; */
 }
 
 .grid .grid-item {
@@ -184,16 +190,19 @@ img {
 
 @keyframes slideOut {
   to {
-    transform: translateX(-100%);
+    transform: translateX(-30px);
+    opacity: 0;
   }
 }
 
 @keyframes slideIn {
   from {
-    transform: translateX(100%);
+    transform: translateX(30px);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -204,3 +213,13 @@ img {
 ::view-transition-new(root) {
   animation: 0.5s both ease-in-out slideIn;
 }
+
+::view-transition-old(header),
+::view-transition-new(header) {
+  animation: none;
+}
+
+/* ::view-transition-old(grid),
+::view-transition-new(grid) {
+  animation: none;
+} */
