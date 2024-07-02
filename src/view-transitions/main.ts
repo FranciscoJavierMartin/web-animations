@@ -37,11 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!item || item.classList.contains('active')) return;
 
     if (document.startViewTransition) {
-      document.startViewTransition(() => {
+      const transition = document.startViewTransition(() => {
         expandImage(item);
       });
-    } else {
-      expandImage(item);
+
+      await transition.finished;
+
+      item.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
     }
   });
 
