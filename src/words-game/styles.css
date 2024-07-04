@@ -151,14 +151,20 @@ body {
   width: 30px;
   margin-right: 10px;
 }
+
 .coins .count {
   font-size: 1.6rem;
 }
+
+/* .coins .count .coins-count {
+  view-transition-name: coins;
+} */
 
 .lives .hearts {
   display: flex;
   margin-right: 20px;
 }
+
 .lives .hearts img {
   width: 25px;
   margin: 0 2px;
@@ -176,22 +182,27 @@ body {
   justify-content: center;
   z-index: 100;
 }
+
 .result.hide {
   display: none;
 }
+
 .result .result-inner {
   padding: 40px 20px 20px;
   background-color: #322c25;
   border: 5px solid #49443e;
 }
+
 .result .result-inner h3 {
   margin: 0;
   font-size: 2rem;
   text-align: center;
 }
+
 .result .result-inner .guess {
   margin: 30px 0 40px;
 }
+
 .result .result-inner .new-game-button {
   padding: 15px;
   width: 100%;
@@ -202,9 +213,11 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
+
 .result .result-inner .new-game-button:hover {
   background-color: #8ddc4b;
 }
+
 .result .result-inner .new-game-button:active {
   transform: scale(0.98);
 }
@@ -222,6 +235,29 @@ body {
   }
 }
 
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 ::view-transition-old(*):only-child {
   animation: 0.25s ease-out both pop-out;
+}
+
+::view-transition-new(*):only-child {
+  animation: 0.25s ease-out both pop-in;
+}
+
+::view-transition-old(coins) {
+  animation: 0.25s ease-out both pop-out;
+}
+
+::view-transition-new(coins) {
+  animation: 0.25s ease-out both pop-in;
 }
